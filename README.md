@@ -12,8 +12,7 @@ This guide can be used to connect the following hardware to HomeAssistant:
    - Schneider Electric **Wiser EM5** / RT2012 Energy Meter / **EER39000** / **EER39100**
    - Clipsal **Wiser Link EM5** / **EER71000** / **EER71100**
 
-<img src="img/schneider_eer39000.jpg" alt="drawing" width="300"/>
-<img src="img/clipsal_eer71000.png" alt="drawing" width="300"/>
+<img src="img/schneider_eer39000.jpg" alt="drawing" width="300"/> <img src="img/clipsal_eer71000.png" alt="drawing" width="300"/>
 
 [ℹ️ Schneider Electric Wiser EM5 documentation](docs/S1B65431-04.pdf)
 
@@ -23,8 +22,7 @@ This guide can be used to connect the following hardware to HomeAssistant:
    - Schneider Electric **Wiser MIP** / IP Communication Module / **EER31600**
    - Clipsal **Wiser Link MIP** / IP Communication Module / **EER70600**
 
-<img src="img/schneider_eer31600.jpg" alt="drawing" width="200"/>
-<img src="img/clipsal_eer70600.jpg" alt="drawing" width="200"/>
+<img src="img/schneider_eer31600.jpg" alt="drawing" width="200"/> <img src="img/clipsal_eer70600.jpg" alt="drawing" width="200"/>
 
 [ℹ️ Schneider Electric Wiser MIP EER31600 documentation](docs/S1B66612-00.pdf)
 
@@ -37,7 +35,7 @@ You can easily find a second-hand / refurbished model online.
 
 ## Wiring diagram
 
-[You can find the wiring diagram from the Wiser EM5 official documentation](docs/S1B65431-04.pdf)
+[Follow the wiring diagram from the Wiser EM5 official documentation](docs/S1B65431-04.pdf)
 
 Connect the Wiser IP module to your router (DHCP recommended).
 
