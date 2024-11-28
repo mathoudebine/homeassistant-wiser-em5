@@ -1,7 +1,7 @@
 # Wiser EM5 + HomeAssistant
 Connect your Schneider Electric Wiser EM5 energy meter to HomeAssistant!
 
-<font size="7"><img src="img/wiser_logo.jpg" alt="drawing" height="200"/> + <img src="img/home-assistant-logo.png" alt="drawing" height="200"/></font>
+<font size="7"><img src="img/wiser_plus_ha.png" alt="drawing" height="200"/>
 
 Local integration without cloud. Also compatible with Clipsal products (Australian market rebranding).
 
