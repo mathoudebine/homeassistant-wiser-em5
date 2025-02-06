@@ -126,4 +126,19 @@ Instead, the Wiser MIP offers a RestAPI access containing all the EM5 energy met
 
 HomeAssistant uses the [RESTful integration](https://www.home-assistant.io/integrations/rest/) to collect data from RestAPI endpoints and create sensors from it.
 
+The RESTful integration cannot be configured from HomeAssistant UI but only manually: 
+Edit your `configuration.yaml`, e.g. using an add-on like [File Editor](https://github.com/home-assistant/addons/tree/master/configurator) or [Studio Code Server](https://github.com/hassio-addons/addon-vscode).
+Find the `rest:` section inside the file, it it does not exist then create a new one at the end of the file then add the following content:
+```yaml
+rest:
+  # REST Sensors for Wiser MIP
+  - !include rest_wiser_mip.yaml
+```
 
+Save the file, then create a new file `rest_wiser_mip.yaml` in the same folder.
+Edit this file and add the following content: 
+
+Energy (kWh) & Power (W) data will be fetched from your Wiser MIP and imported to HomeAssistant for the following EM5 inputs:
+- the 5 EM5 tor/clamps (inputs 7 to 16)
+- the EM5 TIC Télé-Information Client (inputs 5-6) - not available on Clipsal models, ony for the french market energy counter
+- the "others" which is a simple substraction between the TIC input and the sum of all tor/clamps inputs
