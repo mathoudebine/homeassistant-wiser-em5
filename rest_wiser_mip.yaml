@@ -1,0 +1,201 @@
+scan_interval: 30
+resource: http://192.168.1.23/vesta/UsageMeter
+username: "admin"
+password: "admin"
+authentication: basic
+sensor:
+  - name: "Wiser MIP CT1 Energy"
+    device_class: energy
+    state_class: total_increasing
+    value_template: "{{ value_json.UsageMeterList[0].EnergyConsumed | float }}"
+    unit_of_measurement: "kWh"
+    availability: "{{ value_json.UsageMeterList[0].EnergyValidity }}"
+    json_attributes_path: "$.UsageMeterList[0]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "EnergyConsumed"
+      - "Unit_Energy"
+      - "EnergyValidity"
+
+  - name: "Wiser MIP CT1 Power"
+    device_class: power
+    state_class: measurement
+    value_template: "{{ value_json.UsageMeterList[0].Power | float }}"
+    unit_of_measurement: "W"
+    availability: "{{ value_json.UsageMeterList[0].PowerValidity }}"
+    json_attributes_path: "$.UsageMeterList[0]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "Power"
+      - "Unit_Power"
+      - "PowerValidity"
+
+  - name: "Wiser MIP CT2 Energy"
+    device_class: energy
+    state_class: total_increasing
+    value_template: "{{ value_json.UsageMeterList[1].EnergyConsumed | float }}"
+    unit_of_measurement: "kWh"
+    availability: "{{ value_json.UsageMeterList[1].EnergyValidity }}"
+    json_attributes_path: "$.UsageMeterList[1]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "EnergyConsumed"
+      - "Unit_Energy"
+      - "EnergyValidity"
+
+  - name: "Wiser MIP CT2 Power"
+    device_class: power
+    state_class: measurement
+    value_template: "{{ value_json.UsageMeterList[1].Power | float }}"
+    unit_of_measurement: "W"
+    availability: "{{ value_json.UsageMeterList[1].PowerValidity }}"
+    json_attributes_path: "$.UsageMeterList[1]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "Power"
+      - "Unit_Power"
+      - "PowerValidity"
+
+  - name: "Wiser MIP CT3 Energy"
+    device_class: energy
+    state_class: total_increasing
+    value_template: "{{ value_json.UsageMeterList[2].EnergyConsumed | float }}"
+    unit_of_measurement: "kWh"
+    availability: "{{ value_json.UsageMeterList[2].EnergyValidity }}"
+    json_attributes_path: "$.UsageMeterList[2]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "EnergyConsumed"
+      - "Unit_Energy"
+      - "EnergyValidity"
+
+  - name: "Wiser MIP CT3 Power"
+    device_class: power
+    state_class: measurement
+    value_template: "{{ value_json.UsageMeterList[2].Power | float }}"
+    unit_of_measurement: "W"
+    availability: "{{ value_json.UsageMeterList[2].PowerValidity }}"
+    json_attributes_path: "$.UsageMeterList[2]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "Power"
+      - "Unit_Power"
+      - "PowerValidity"
+
+  - name: "Wiser MIP CT4 Energy"
+    device_class: energy
+    state_class: total_increasing
+    value_template: "{{ value_json.UsageMeterList[3].EnergyConsumed | float }}"
+    unit_of_measurement: "kWh"
+    availability: "{{ value_json.UsageMeterList[3].EnergyValidity }}"
+    json_attributes_path: "$.UsageMeterList[3]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "EnergyConsumed"
+      - "Unit_Energy"
+      - "EnergyValidity"
+
+  - name: "Wiser MIP CT4 Power"
+    device_class: power
+    state_class: measurement
+    value_template: "{{ value_json.UsageMeterList[3].Power | float }}"
+    unit_of_measurement: "W"
+    availability: "{{ value_json.UsageMeterList[3].PowerValidity }}"
+    json_attributes_path: "$.UsageMeterList[3]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "Power"
+      - "Unit_Power"
+      - "PowerValidity"
+
+  - name: "Wiser MIP CT5 Energy"
+    device_class: energy
+    state_class: total_increasing
+    value_template: "{{ value_json.UsageMeterList[4].EnergyConsumed | float }}"
+    unit_of_measurement: "kWh"
+    availability: "{{ value_json.UsageMeterList[4].EnergyValidity }}"
+    json_attributes_path: "$.UsageMeterList[4]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "EnergyConsumed"
+      - "Unit_Energy"
+      - "EnergyValidity"
+
+  - name: "Wiser MIP CT5 Power"
+    device_class: power
+    state_class: measurement
+    value_template: "{{ value_json.UsageMeterList[4].Power | float }}"
+    unit_of_measurement: "W"
+    availability: "{{ value_json.UsageMeterList[4].PowerValidity }}"
+    json_attributes_path: "$.UsageMeterList[4]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "Power"
+      - "Unit_Power"
+      - "PowerValidity"
+
+  - name: "Wiser MIP Others Energy"
+    device_class: energy
+    state_class: total_increasing
+    value_template: "{{ value_json.UsageMeterList[9].EnergyConsumed | float }}"
+    unit_of_measurement: "kWh"
+    availability: "{{ value_json.UsageMeterList[9].EnergyValidity }}"
+    json_attributes_path: "$.UsageMeterList[9]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "EnergyConsumed"
+      - "Unit_Energy"
+      - "EnergyValidity"
+
+  - name: "Wiser MIP Others Power"
+    device_class: power
+    state_class: measurement
+    value_template: "{{ value_json.UsageMeterList[9].Power | float }}"
+    unit_of_measurement: "W"
+    availability: "{{ value_json.UsageMeterList[9].PowerValidity }}"
+    json_attributes_path: "$.UsageMeterList[9]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "Power"
+      - "Unit_Power"
+      - "PowerValidity"
+
+  - name: "Wiser MIP Electricity Meter Energy"
+    device_class: energy
+    state_class: total_increasing
+    value_template: "{{ value_json.UsageMeterList[10].EnergyConsumed | float }}"
+    unit_of_measurement: "kWh"
+    availability: "{{ value_json.UsageMeterList[10].EnergyValidity }}"
+    json_attributes_path: "$.UsageMeterList[10]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "EnergyConsumed"
+      - "Unit_Energy"
+      - "EnergyValidity"
+
+  - name: "Wiser MIP Electricity Meter Power"
+    device_class: power
+    state_class: measurement
+    value_template: "{{ value_json.UsageMeterList[10].Power | float }}"
+    unit_of_measurement: "W"
+    availability: "{{ value_json.UsageMeterList[10].PowerValidity }}"
+    json_attributes_path: "$.UsageMeterList[10]"
+    json_attributes:
+      - "Type"
+      - "Name"
+      - "Power"
+      - "Unit_Power"
+      - "PowerValidity"
