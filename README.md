@@ -136,7 +136,7 @@ rest:
 ```
 
 Save the file, then create a new file `rest_wiser_mip.yaml` in the same folder.
-Edit this file and add the following content: 
+Edit this file and add the following content: [rest_wiser_mip.yaml](rest_wiser_mip.yaml)
 
 Energy (kWh) & Power (W) data will be fetched from your Wiser MIP and imported to HomeAssistant for the following EM5 inputs:
 - the 5 EM5 tor/clamps (inputs 7 to 16)
