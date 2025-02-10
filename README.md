@@ -136,9 +136,10 @@ rest:
 ```
 
 Save the file, then create a new file `rest_wiser_mip.yaml` in the same folder.
-Edit this file and add the following content: [rest_wiser_mip.yaml](rest_wiser_mip.yaml)
+Edit this file and add the following content: [rest_wiser_mip.yaml](rest_wiser_mip.yaml).
+Restart HomeAssistant to reload the configuration.
 
 Energy (kWh) & Power (W) data will be fetched from your Wiser MIP and imported to HomeAssistant for the following EM5 inputs:
-- the 5 EM5 tor/clamps (inputs 7 to 16)
-- the EM5 TIC Télé-Information Client (inputs 5-6) - not available on Clipsal models, ony for the french market energy counter
+- the 5 EM5 tor/clamps <img src="img/tor.png" alt="drawing" width="30"/> (inputs 7 to 16)
+- the EM5 TIC Télé-Information Client <img src="img/data_transfer.svg" alt="drawing" width="30"/> (inputs 5-6) - not available on Clipsal models, only for the french market energy counter
 - the "others" which is a simple substraction between the TIC input and the sum of all tor/clamps inputs
