@@ -1,7 +1,8 @@
 # Wiser EM5 + HomeAssistant
+
 Connect your Schneider Electric Wiser EM5 energy meter to HomeAssistant!
 
-<font size="7"><img src="img/wiser_plus_ha.png" alt="drawing" height="200"/>
+<img src="img/wiser_plus_ha.png" alt="drawing" height="200"/>
 
 Local integration without cloud. Also compatible with Clipsal products (Australian market rebranding).
 
@@ -10,8 +11,8 @@ Local integration without cloud. Also compatible with Clipsal products (Australi
 This guide can be used to connect the following hardware to HomeAssistant:
 
 - a compatible energy meter:
-   - Schneider Electric **Wiser EM5** / RT2012 Energy Meter / **EER39000** / **EER39100**
-   - Clipsal **Wiser Link EM5** / **EER71000** / **EER71100**
+  - Schneider Electric **Wiser EM5** / RT2012 Energy Meter / **EER39000** / **EER39100**
+  - Clipsal **Wiser Link EM5** / **EER71000** / **EER71100**
 
 <img src="img/schneider_eer39000.jpg" alt="drawing" width="300"/> <img src="img/clipsal_eer71000.png" alt="drawing" width="300"/>
 
@@ -20,8 +21,8 @@ This guide can be used to connect the following hardware to HomeAssistant:
 [ℹ️ Clipsal Wiser Link EM5 documentation](docs/W0001723.PDF)
 
 - a compatible Ethernet gateway:
-   - Schneider Electric **Wiser MIP** / IP Communication Module / **EER31600**
-   - Clipsal **Wiser Link MIP** / IP Communication Module / **EER70600**
+  - Schneider Electric **Wiser MIP** / IP Communication Module / **EER31600**
+  - Clipsal **Wiser Link MIP** / IP Communication Module / **EER70600**
 
 <img src="img/schneider_eer31600.jpg" alt="drawing" width="200"/> <img src="img/clipsal_eer70600.jpg" alt="drawing" width="200"/>
 
@@ -32,7 +33,6 @@ This guide can be used to connect the following hardware to HomeAssistant:
 Note: The Wiser EM5 energy meter can also be linked to the newer Schneider Electric **EER31800** / Clipsal **EER72600** Wiser IP module, but this gateway does not offer an easy way to get Wiser EM5 data for now.
 If you want to connect your Wiser EM5 energy meter to HomeAssistant, I strongly suggest you to use the Schneider Electric EER31600 / Clipsal EER70600 Wiser MIP gateway.
 You can find a second-hand / refurbished model online.
-
 
 ## Wiring diagram
 
@@ -47,10 +47,9 @@ Note: Your Wiser EM5 cannot be connected to the Wiser Wall Display EER22000. If 
 
 <img src="img/schneider_eer220000.jpg" alt="drawing" width="300"/>
 
-After wiring, you should be able to access the Wiser MIP web portal using its IP address (default login is admin/admin).
-If not, reset the Wiser MIP (15 seconds press on front button then release, Status LED should turn red, wait for Status LED green again)
+After wiring, you should be able to access the Wiser MIP web portal using its IP address (**default login is admin/admin**). If not, [reset the Wiser MIP][mip_reset].
 
-<img src="img/wiser_mip_portal.png" alt="drawing" width="600"/>
+<img src="img/mip_homepage.png" alt="drawing" width="600"/>
 
 Under "Device Status" > "MIP" the EM5 connection should be enabled and working:
 
@@ -60,10 +59,15 @@ Ignore the "Wiser Link Internet connection", it will not work because the EER316
 
 ## Firmware update (optional)
 
-### Latest publicly available firmware version:
+### Latest publicly available firmware version
+
 - Schneider Electric Wiser EM5 (all versions): **1.6.00**
 - Schneider Electric Wiser MIP (EER31600): **V1.3.8**
 - Clipsal EM5 / MIP : **unknown**
+
+The version can be checked using MIP web interface:
+
+<img src="img/mip_firmware_version.png" alt="drawing" width="800"/>
 
 ### Do I need to update?
 
@@ -71,16 +75,20 @@ Ignore the "Wiser Link Internet connection", it will not work because the EER316
 
 Firmware updates for Schneider Electric Wiser EM5 & Wiser MIP EER31600 are needed only if you want to monitor each of the 5 EM5 tor/clamps input separately:
 
-If you have a recent Schneider Electric Wiser EM5 (or a Clipsal Wiser EM5), this might already be the case.
+If you have a recent Schneider Electric Wiser EM5 (or a Clipsal Wiser EM5), this might already be the case: from the MIP web interface on the Home Page under "My consumption" if you have a list of loads at the end of page with 5 clamps listed (names may vary) then **you do not need to update**.
 
-<img src="img/firmware_update_all_clamps.png" alt="drawing" width="600"/>
+<img src="img/mip_homepage_all_loads.png" alt="drawing" width="800"/>
+
+If you don't have this list, go to the "Settings" page and under "EM5 configuration" check if you have the option to change the circuits configuration. If so, set all circuits configuration to "Specific load" and identify them with a custom name. Submit the change. **You do not need to update**.
+
+<img src="img/mip_settings_circuits_config.png" alt="drawing" width="600"/>
 
 For older Wiser EM5, because they were originally developed as french RT2012 energy meters, the 2 electrical plugs input <img src="img/electrical_plug.svg" alt="drawing" width="30"/> cannot be monitored separately.
-This means you have only 4 measurements available :
+This means you can only get data by Usage so you will only have 4 consumption data available :
 
-<img src="img/firmware_old_rt2012.png" alt="drawing" width="600"/>
+<img src="img/mip_homepage_usages.png" alt="drawing" width="600"/>
 
-If you want to monitor 5 separate tor/clamps input, you need to update the firmware.
+If you want to monitor the 5 tor/clamps input separately, **you need to update the firmware**.
 
 ### Update procedure
 
@@ -90,11 +98,19 @@ Because the Wiser MIP EER31600 is no longer maintained, it is not possible to up
 
 The recommended way is to download and install an older version of the eSetup app like [eSetup for Android 6.2.0](https://github.com/mathoudebine/homeassistant-wiser-em5/raw/refs/heads/main/app/eSetup_for_Electrician_6.2.0.apk)
 
+Connect the smartphone to the same local network as the MIP. Disable any VPN software on the smartphone.
+
 Open the app and select "Wiser IP Module".
 
 <img src="img/esetup/homescreen.png" alt="drawing" width="300"/>
 
-You should see your Wiser MIP on the list if your smartphone is connected to the same network. Select it.
+You should see your Wiser MIP on the list. If the MIP is not detected:
+
+- be sure that the MIP and the smartphone are connected to the same network
+- disable any VPN software on the smartphone
+- try to access the MIP web interface from the smartphone using a web browser
+
+Select your MIP.
 
 <img src="img/esetup/detect.png" alt="drawing" width="300"/>
 
@@ -102,22 +118,27 @@ A message should state that your firmware is not up-to-date. Click on the "Updat
 
 <img src="img/esetup/update_needed.jpeg" alt="drawing" width="300"/>
 
-Wait for the update procedure to finish. 
+Wait for the update procedure to finish.
+
 - **Do not exit the eSetup app!**
 - **Ensure the smartphone has enough battery or plug it to a power source!**
-- **Update can take up to 30 minutes if your Wiser EM5 is also updated (shorter of only the Wiser MIP is updated).**
+- **Update can take up to 30 minutes if your Wiser EM5 is also updated (shorter if only the Wiser MIP is updated).**
 
 <img src="img/esetup/update_in_progress.jpeg" alt="drawing" width="300"/>
+
+If the update fails:
+
+- [reset the Wiser MIP][mip_reset]
+- keep the smartphone in a place with good Wi-Fi signal
+- plug the smartphone to a power source
+- disable the smartphone auto sleep / screen off
+- (untested) disconnect the EM5 to update only the MIP
 
 Once the update is done, the EM5 and MIP will reboot. After reboot, open eSetup app again and select your MIP. The update message should no longer be displayed.
 
 <img src="img/esetup/up-to-date.png" alt="drawing" width="300"/>
 
-If the update fails:
-- reset the Wiser MIP (15 seconds press on front button then release, Status LED should turn red, wait for Status LED green again) then try to update again
-- keep the smartphone in a place with good Wi-Fi signal
-- plug the smartphone to a power source
-- disable the smartphone auto sleep / screen off
+After update, the MIP web portal might not be accessible (error or just a blank page loading). To fix this issue, [reset the Wiser MIP][mip_reset].
 
 ## HomeAssistant integration
 
@@ -126,9 +147,10 @@ Instead, the Wiser MIP offers a RestAPI access containing all the EM5 energy met
 
 HomeAssistant uses the [RESTful integration](https://www.home-assistant.io/integrations/rest/) to collect data from RestAPI endpoints and create sensors from it.
 
-The RESTful integration cannot be configured from HomeAssistant UI but only manually: 
+The RESTful integration cannot be configured from HomeAssistant UI but only manually:
 Edit your `configuration.yaml`, e.g. using an add-on like [File Editor](https://github.com/home-assistant/addons/tree/master/configurator) or [Studio Code Server](https://github.com/hassio-addons/addon-vscode).
 Find the `rest:` section inside the file, it it does not exist then create a new one at the end of the file then add the following content:
+
 ```yaml
 rest:
   # REST Sensors for Wiser MIP
@@ -140,6 +162,9 @@ Edit this file and add the following content: [rest_wiser_mip.yaml](rest_wiser_m
 Restart HomeAssistant to reload the configuration.
 
 Energy (kWh) & Power (W) data will be fetched from your Wiser MIP and imported to HomeAssistant for the following EM5 inputs:
+
 - the 5 EM5 tor/clamps <img src="img/tor.png" alt="drawing" width="30"/> (inputs 7 to 16)
 - the EM5 TIC Télé-Information Client - not available on Clipsal models, only for the french market energy counter
 - the "others" which is a simple substraction between the TIC input and the sum of all tor/clamps inputs
+
+[mip_reset]: ## "Press 15 seconds on front button then release, wait for Status LED to turn red then green again. If not working, press front button until Status LED turns red."
